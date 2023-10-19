@@ -40,9 +40,9 @@ const Header = () => {
                 }
 
                 <NavLinks>
-                    <LinkSection to={'/'}>Início</LinkSection>
-                    <LinkSection to={'/sobre'}>Sobre</LinkSection>
-                    <LinkSection to={'/planos'}>Planos</LinkSection>
+                    <LinkSection href={'/'}>Início</LinkSection>
+                    <LinkSection href={'/sobre'}>Sobre</LinkSection>
+                    <LinkSection href={'/planos'}>Planos</LinkSection>
                     <BoxLinkLog>
                         <LinkLog href={'/inscricao'}>Inscreva-se</LinkLog>
                         <LinkLog href={'/login'} >Login</LinkLog>
