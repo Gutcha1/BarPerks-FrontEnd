@@ -25,15 +25,15 @@ const RoutesMain = () => {
     return (
         <Routes>
             <Route path="/" element={<HomePage/>}/>
-            <Route path="/planos" element={<PlanosPage/>}/>
-            <Route path="/sobre" element={<SobrePage/>}/>
-            <Route path="/login" element={<LoginPage/>}/>
-            <Route path="/inscricao" element={<InscricaoPage/>}/>
-            <Route path="/inscricao-cliente" element={<InscricaoClientePage/>}/>
-            <Route path="/inscricao-estabelecimento" element={<InscricaoEstabelecimentoPage/>}/>
-            <Route path="/login-cliente" element={<LoginClientePage title="Login (Cliente)"/>}/>
-            <Route path="/login-estabelecimento" element={<LoginAdministradorPage title="Login (Estabelecimento)"/>}/>
-            <Route path="/admin" element={<ProtectedRoutesAdmin/>}>
+            <Route path="barperks.vercel.app/planos" element={<PlanosPage/>}/>
+            <Route path="barperks.vercel.app/sobre" element={<SobrePage/>}/>
+            <Route path="barperks.vercel.app/login" element={<LoginPage/>}/>
+            <Route path="barperks.vercel.app/inscricao" element={<InscricaoPage/>}/>
+            <Route path="barperks.vercel.app/inscricao-cliente" element={<InscricaoClientePage/>}/>
+            <Route path="barperks.vercel.app/inscricao-estabelecimento" element={<InscricaoEstabelecimentoPage/>}/>
+            <Route path="barperks.vercel.app/login-cliente" element={<LoginClientePage title="Login (Cliente)"/>}/>
+            <Route path="barperks.vercel.app/login-estabelecimento" element={<LoginAdministradorPage title="Login (Estabelecimento)"/>}/>
+            <Route path="barperks.vercel.app/admin" element={<ProtectedRoutesAdmin/>}>
                 <Route path="/admin" element={<UserAdminEditPage/>}/>
                 <Route path="/admin/registro-pontuacao" element={<UserRegisterPoitingPage/>}/>
                 <Route path="/admin/cadastrar-produtos" element={<UserRegisterProductPage/>}/>
