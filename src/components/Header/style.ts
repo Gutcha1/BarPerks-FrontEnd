@@ -1,6 +1,7 @@
 import styled, { keyframes } from "styled-components"
 import { HiMenu } from "react-icons/hi"
 import { FaWindowClose } from "react-icons/fa"
+import { Link } from "react-router-dom";
 
 export const HeaderGlobal = styled.header`
     background-color: var(--white-fixed);
@@ -65,7 +66,7 @@ export const NavLinks = styled.nav`
     }
 `
 
-export const LinkSection = styled.a`
+export const LinkSection = styled(Link)`
     color: var(--grey-0);
     font-size: var(--font-size-4);
     font-weight: 300;
