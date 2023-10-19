@@ -1,6 +1,10 @@
-import { DivBoxBlack, DivPrice, ItemPlan, LinkStartBlack, LinkStartWhite, ListPlans, SectionAllPlans, SpanBestCost, SpanLight, SpanNumberPrice, SpanSignPrice, TitlePlan, TitlePlans } from "./style"
+import { useContext } from "react"
+import { DivBoxBlack, DivPrice, ItemPlan, ButtonStartBlack, ButtonStartWhite, ListPlans, SectionAllPlans, SpanBestCost, SpanLight, SpanNumberPrice, SpanSignPrice, TitlePlan, TitlePlans } from "./style"
+import { AdminContext } from "../../contexts/administradorContext"
 
 const SectionPlans = () => {
+    const { buyPlan } = useContext(AdminContext)
+
     return (
         <SectionAllPlans>
             <TitlePlans>Explore nossos planos</TitlePlans>
@@ -17,10 +21,10 @@ const SectionPlans = () => {
                     <SpanLight>Todo mês</SpanLight>
                     <SpanLight>Válido por 6 meses</SpanLight>
 
-                    <LinkStartBlack href="/inscricao">Começar</LinkStartBlack>
+                    <ButtonStartBlack type="button" onClick={() => buyPlan('padrao')}>Começar</ButtonStartBlack>
 
-                    <SpanLight>- Benefício 1</SpanLight>
-                    <SpanLight>- Benefício 2</SpanLight>
+                    <SpanLight style={{width: '100%'}}>- Até 500 clientes mensais</SpanLight>
+                    <SpanLight style={{width: '100%'}}>- Válido por 6 meses</SpanLight>
                 </ItemPlan>
 
                 <ItemPlan style={{padding: '0px'}}>
@@ -38,11 +42,11 @@ const SectionPlans = () => {
 
                     </DivBoxBlack>
 
-                    <LinkStartWhite href="/inscricao">Começar</LinkStartWhite>
+                    <ButtonStartWhite type="button" onClick={() => buyPlan('premium')}>Começar</ButtonStartWhite>
 
-                    <SpanLight style={{padding: '0px 40px'}}>- Benefício 1</SpanLight>
-                    <SpanLight style={{padding: '0px 40px'}}>- Benefício 2</SpanLight>
-                    <SpanLight style={{padding: '0px 40px'}}>- Benefício 3</SpanLight>
+                    <SpanLight style={{padding: '0px 40px'}}>- Clientes ilimitados</SpanLight>
+                    <SpanLight style={{padding: '0px 40px'}}>- Suporte prioritário</SpanLight>
+                    <SpanLight style={{padding: '0px 40px'}}>- Válido por 12 meses</SpanLight>
                 </ItemPlan>
             </ListPlans>
         </SectionAllPlans>
