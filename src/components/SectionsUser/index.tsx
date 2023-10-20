@@ -153,7 +153,11 @@ const SectionRedeemReward = () => {
         const target = element.target as HTMLInputElement;
 
         if(target.value){
-            const listFilter = listProducts.filter((item) => item.name.includes(target.value))
+            const listFilter = listProducts.filter((item) => {
+                if(item.name.includes(target.value)){
+                    return item
+                }
+            })
 
             setFilterListProducts(listFilter)
         }
