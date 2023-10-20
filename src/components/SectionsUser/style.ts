@@ -6,7 +6,7 @@ export const SectionUser = styled.section`
     width: 81vw;
     margin: 0 auto;
     margin-top: 25px;
-    min-height: 68vh;
+    min-height: 100vh;
 `
 
 export const Title = styled.h2`
