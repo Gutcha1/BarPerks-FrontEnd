@@ -311,7 +311,7 @@ const FormLogin = () => {
             </DivBoxMobile>
 
             <DivBox>
-                <ReCAPTCHA sitekey="6LciMbUoAAAAAOgXKZYpbYaxG9Emi7wHazWDUXOd" size="normal" onChange={() => recaptcha ? setRecaptcha(false) : setRecaptcha(true)}/>
+                <ReCAPTCHA sitekey="6LcpIYAoAAAAACOl5IQCXl2DmDwRLlRHHJ5SKgIx" size="normal" onChange={() => recaptcha ? setRecaptcha(false) : setRecaptcha(true)}/>
             </DivBox>
 
             <ButtonForm name="Fazer Login"/>
