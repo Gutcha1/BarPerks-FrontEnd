@@ -50,7 +50,7 @@ interface iAdminContext {
   adminInfo: iAdminInfo | undefined;
   setAdminInfo: Dispatch<SetStateAction<iAdminInfo | undefined>>;
   exitAdmin: () => Promise<void>;
-  updateAdmin: (data: iFormUserEdit, id: number) => Promise<void>;
+  updateAdmin: (data: iFormAdminEdit, id: number) => Promise<void>;
   registerClient: (data: iFormRegisterClient) => Promise<void>;
   registerProduct: (data: iRegisterProduct) => Promise<void>;
   editProductsModal: boolean;
