@@ -26,14 +26,14 @@ const FormUserAdminEdit = () => {
         }
     })
 
-    const { register, handleSubmit, formState: { errors } } = useForm<iFormAdminEdit>({
+    const { register, handleSubmit, formState: { errors } } = useForm<iFormUserEdit>({
         resolver: zodResolver(userEditSchema),
     });
 
-    const submitEditUser: SubmitHandler<iFormAdminEdit> = (data: iFormAdminEdit) => {
-        const newData: iFormAdminEdit = {
+    const submitEditUser: SubmitHandler<iFormUserEdit> = (data: iFormUserEdit) => {
+        const newData: iFormUserEdit = {
             name: data.name ? data.name : adminInfo?.name,
-            social_number: data.social_number ? data.social_number : adminInfo?.social_number,
+            social_number: data.cpf ? data.cpf : adminInfo?.social_number,
             email: data.email ? data.email : adminInfo?.email,
             password: data.password ? data.password : '',
             telephone: data.telephone ? data.telephone : adminInfo?.telephone,
@@ -57,7 +57,7 @@ const FormUserAdminEdit = () => {
             <DivBoxInput>
                 <Label htmlFor="cpf">CPF/CNPJ:</Label>
                 <InputUser id="cpf" name="cpf" type="text" register={register} placeholder={adminInfo?.social_number}/>
-                { errors.social_number?.message ? <Span>{errors.social_number.message}</Span> : null }
+                { errors.cpf?.message ? <Span>{errors.cpf.message}</Span> : null }
             </DivBoxInput>
 
             <DivBoxInput>

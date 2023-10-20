@@ -4,7 +4,7 @@ import { api, apiMercadoPago } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { iSendEmail } from "../interfaces/user/recoverPassword.interface";
-import { iAdminInfo, iFormRegisterClient, iFormSearchClient, iFormUserEdit, iProduct, iRegisterProduct, iSearchClient, iSearchReward, iUpdateProduct, iUpdateRegisterClient } from "../interfaces/user/user.interface";
+import { iAdminInfo, iFormRegisterClient, iFormSearchClient, iFormAdminEdit, iProduct, iRegisterProduct, iSearchClient, iSearchReward, iUpdateProduct, iUpdateRegisterClient } from "../interfaces/user/user.interface";
 import { iListHistoryRewardsClient } from "../interfaces/user/historyRewards.interface";
 
 interface iAdminProviderProps {
@@ -392,7 +392,7 @@ const AdminProvider = ({ children }: iAdminProviderProps) => {
 
     navigate("/")
   }
-  const updateAdmin = async (data: iFormUserEdit, id: number): Promise<void> => { 
+  const updateAdmin = async (data: iFormAdminEdit, id: number): Promise<void> => { 
     try {
         const token = cookies["token"]
 
