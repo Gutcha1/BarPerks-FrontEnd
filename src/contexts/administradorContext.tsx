@@ -91,6 +91,7 @@ interface iAdminContext {
   linkQrCode: string;
   setLinkQrCode: Dispatch<SetStateAction<string>>;
   buyPlan: (plan: string) => Promise<void>;
+  excludeAdmin: (id: number) => Promise<void>;
 }
   
 export const AdminContext = createContext({} as iAdminContext);
@@ -431,6 +432,48 @@ const AdminProvider = ({ children }: iAdminProviderProps) => {
             progress: undefined,
             theme: "light",
         });
+    }
+  }
+  const excludeAdmin = async (id: number): Promise<void> => {
+    try {
+      const token = cookies["token"]
+
+      await api.delete(`pubs/${id}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`    
+        }
+      })
+
+      toast.success('Conta excluída com sucesso!', {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+
+      setTimeout(() => {
+        removeCookie("token")
+
+        navigate("/")
+      }, 3200)
+
+    }
+    catch {
+      toast.error('Ops, algo de errado!', {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
     }
   }
 
@@ -1032,6 +1075,7 @@ const AdminProvider = ({ children }: iAdminProviderProps) => {
         linkQrCode,
         setLinkQrCode,
         buyPlan,
+        excludeAdmin,
       }}>
       {children}
     </AdminContext.Provider>

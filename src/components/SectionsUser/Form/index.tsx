@@ -4,7 +4,7 @@ import { DivBoxInput, DivBtns, Form, Label, Span, InputFile, DivInputsYellow, Sp
 import { SubmitHandler, useForm } from "react-hook-form";
 import { iFormAdminEdit, iFormRegisterClient, iFormSearchClient, iFormSearchPub, iFormUserEdit, iFormUserRegisterPoints, iRegisterProduct } from "../../../interfaces/user/user.interface";
 import { userEditSchema, userRegisterClientSchema, userRegisterPointsSchema, userRegisterProductSchema, userSearchClientSchema, userSearchPubSchema } from "../../../schemas/user.schema";
-import { ButtonEditProducts, ButtonListRegisterClient, ButtonUser, ButtonUserSmall } from "../Button";
+import { ButtonEditProducts, ButtonListRegisterClient, ButtonUser, ButtonUserSmall, ButtonUserSmallDelete } from "../Button";
 import { useCallback, useContext, useState } from "react";
 import { ClientContext } from "../../../contexts/clienteContext";
 import { useDropzone } from "react-dropzone";
@@ -92,7 +92,7 @@ const FormUserAdminEdit = () => {
             </DivBoxInput>
 
             <DivBtns>
-                <ButtonUserSmall text="Remover Usuário" type="submit"/>
+                <ButtonUserSmallDelete text="Remover Usuário" type="button"/>
                 <ButtonUserSmall text="Salvar" type="submit"/>
             </DivBtns>
         </Form>

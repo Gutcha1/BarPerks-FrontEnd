@@ -9,6 +9,14 @@ const ButtonUserSmall = ({text, type}: iButton) => {
     )
 }
 
+const ButtonUserSmallDelete = ({text, type}: iButton) => {
+    const { excludeAdmin, adminInfo } = useContext(AdminContext)
+
+    return (
+        <ButtonSmallStyle type={type} onClick={() => excludeAdmin(adminInfo!.id!)}>{text}</ButtonSmallStyle>
+    )
+}
+
 const ButtonUser = ({text, type, margin }: iButton) => {
     return (
         <Button style={{marginTop: `${margin}`}} type={type}>{text}</Button>
@@ -34,4 +42,4 @@ const ButtonEditProducts = () => {
     )
 }
 
-export { ButtonUserSmall, ButtonUser, ButtonEditProducts, ButtonListRegisterClient }
+export { ButtonUserSmall, ButtonUser, ButtonEditProducts, ButtonListRegisterClient, ButtonUserSmallDelete }
