@@ -12,7 +12,7 @@ Os estabelecimentos podem se cadastrar, fazer login, atualizar suas informaçõe
 
 O projeto foi desenvolvido utilizando tecnologias modernas de desenvolvimento web, como React, TypeScript, Context API e React Router Dom. Também foi utilizado bibliotecas como React Hook Form, React Toastify, React Qr Code, React Icons, React Google Recaptcha, Zod, Axios e etc. Para aprimorar a experiência do usuário e facilitar a integração com a API do backend.
 
-Este projeto foi realizado seguindo o método Scrum, com o objetivo de manter um ambiente de desenvolvimento mais produtivo. A proteção de rotas foi implementada para garantir a segurança e privacidade dos usuários, enquanto a responsividade foi priorizada para oferecer uma experiência consistente em diferentes dispositivos.
+Este projeto foi realizado seguindo o método Ágil, com o objetivo de manter um ambiente de desenvolvimento mais produtivo. A proteção de rotas foi implementada para garantir a segurança e privacidade dos usuários, enquanto a responsividade foi priorizada para oferecer uma experiência consistente em diferentes dispositivos.
 
 ### 💻 Link da página: [Clique aqui](https://github.com/)
 
