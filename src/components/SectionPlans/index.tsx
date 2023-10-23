@@ -3,8 +3,6 @@ import { DivBoxBlack, DivPrice, ItemPlan, ButtonStartBlack, ButtonStartWhite, Li
 import { AdminContext } from "../../contexts/administradorContext"
 
 const SectionPlans = () => {
-    const { buyPlan } = useContext(AdminContext)
-
     return (
         <SectionAllPlans>
             <TitlePlans>Explore nossos planos</TitlePlans>
@@ -21,7 +19,7 @@ const SectionPlans = () => {
                     <SpanLight>Todo mês</SpanLight>
                     <SpanLight>Válido por 6 meses</SpanLight>
 
-                    <ButtonStartBlack type="button" onClick={() => buyPlan('padrao')}>Começar</ButtonStartBlack>
+                    <ButtonStartBlack type="button">Começar</ButtonStartBlack>
 
                     <SpanLight style={{width: '100%'}}>- Até 500 clientes mensais</SpanLight>
                     <SpanLight style={{width: '100%'}}>- Válido por 6 meses</SpanLight>
@@ -42,7 +40,7 @@ const SectionPlans = () => {
 
                     </DivBoxBlack>
 
-                    <ButtonStartWhite type="button" onClick={() => buyPlan('premium')}>Começar</ButtonStartWhite>
+                    <ButtonStartWhite type="button">Começar</ButtonStartWhite>
 
                     <SpanLight style={{padding: '0px 40px'}}>- Clientes ilimitados</SpanLight>
                     <SpanLight style={{padding: '0px 40px'}}>- Suporte prioritário</SpanLight>
