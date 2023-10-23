@@ -14,7 +14,7 @@ O projeto foi desenvolvido utilizando tecnologias modernas de desenvolvimento we
 
 Este projeto foi realizado seguindo o método Ágil, com o objetivo de manter um ambiente de desenvolvimento mais produtivo. A proteção de rotas foi implementada para garantir a segurança e privacidade dos usuários, enquanto a responsividade foi priorizada para oferecer uma experiência consistente em diferentes dispositivos.
 
-### 💻 Link da página: [Clique aqui](https://github.com/)
+### 💻 Link da página: [Clique aqui]([https://github.com/](https://barperks.vercel.app/)
 
 ### 💻 Link do repositório Back-end: [Clique aqui](https://github.com/)
 <br>
@@ -58,7 +58,7 @@ Este projeto foi realizado seguindo o método Ágil, com o objetivo de manter um
 <ul>
     <li>State management feito com Context Api e React Hooks.</li>
     <li>TypeScript utilizado com React.</li>
-    <li>Projeto feito utilizando o método Scrum.</li>
+    <li>Projeto feito utilizando o método Ágil</li>
     <li>Proteção de rotas com React Router Dom.</li>
     <li>Requisições da Api implementadas com o Axios.</li>
 </ul>
