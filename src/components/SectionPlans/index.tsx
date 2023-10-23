@@ -1,6 +1,4 @@
-import { useContext } from "react"
 import { DivBoxBlack, DivPrice, ItemPlan, ButtonStartBlack, ButtonStartWhite, ListPlans, SectionAllPlans, SpanBestCost, SpanLight, SpanNumberPrice, SpanSignPrice, TitlePlan, TitlePlans } from "./style"
-import { AdminContext } from "../../contexts/administradorContext"
 
 const SectionPlans = () => {
     return (
