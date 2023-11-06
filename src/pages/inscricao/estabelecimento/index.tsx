@@ -1,13 +1,14 @@
 import { useForm } from "react-hook-form";
 import Footer from "../../../components/Footer";
 import Header from "../../../components/Header";
-import { SectionInscricaoAdmin } from "../../../components/SectionInscricao";
+import SectionInscricao from "../../../components/SectionInscricao";
 import { Main } from "../style";
 import { iFormInscricao } from "../../../interfaces/inscricao/inscricao.interface";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerEstablishmentSchema } from "../../../schemas/inscricao.schema";
 
 const InscricaoEstabelecimentoPage = () => {
+
   const { register, handleSubmit, formState: { errors } } = useForm<iFormInscricao>({
     resolver: zodResolver(registerEstablishmentSchema),
   });
@@ -17,10 +18,10 @@ const InscricaoEstabelecimentoPage = () => {
       <Header />
 
       <Main>
-        <SectionInscricaoAdmin
+        <SectionInscricao
           title="Inscreva-se (Estabelecimento)"
           name="Nome do Bar"
-          socialNumber="CPF/CNPJ"
+          socialNumber="CPF/CNPJ    "
           email="E-mail"
           password="Senha"
           passwordRepeated="Repita a senha"
@@ -29,6 +30,7 @@ const InscricaoEstabelecimentoPage = () => {
           state="Estado"
           city="Cidade"
           postalCode="Código postal(CEP)"
+          photo="Foto"
           register={register}
           handleSubmit={handleSubmit}
           errors={errors}

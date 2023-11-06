@@ -36,7 +36,7 @@ export const ListPrograms = styled.ul`
     display: flex;
     width: 80vw;
     margin: 0 auto;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 60px;
 
     @media(max-width: 800px){

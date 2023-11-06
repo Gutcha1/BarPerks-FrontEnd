@@ -34,7 +34,7 @@ const SectionStart = () => {
                         <FigureIcon>
                             <FourArrowsIcon src={ArrowsIcon} alt={'4setas-icon'}/>
                         </FigureIcon>
-                        <SpanIcon>Flexibilidade e Agilidade</SpanIcon>
+                        <SpanIcon>Flexibilidade e agilidade</SpanIcon>
                     </DivBoxIcon>
                 </DivBoxIcons>
             </DivBox>

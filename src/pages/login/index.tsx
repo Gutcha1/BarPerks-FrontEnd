@@ -12,9 +12,9 @@ const LoginPage = () => {
                     <SectionOptions 
                         title="Login" 
                         optionOne="Cliente" 
-                        optionTwo="Estabelecimento" 
+                        optionTwo="Administrador" 
                         linkOne="/login-cliente" 
-                        linkTwo="/login-estabelecimento"
+                        linkTwo="/login-administrador"
                     />
                 </Main>
             <Footer/>
