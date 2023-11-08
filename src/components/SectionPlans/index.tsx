@@ -15,7 +15,7 @@ const SectionPlans = () => {
                     </DivPrice>
 
                     <SpanLight>Todo mês</SpanLight>
-                    <SpanLight>Válido por 6 meses</SpanLight>
+                    
 
                     <SpanLight style={{width: '100%', marginTop: "40px"}}>- Até 500 clientes</SpanLight>
                     <SpanLight style={{width: '100%'}}>- Válido por 6 meses</SpanLight>
@@ -32,7 +32,7 @@ const SectionPlans = () => {
                         </DivPrice>
 
                         <SpanLight style={{color: 'white'}}>Todo mês</SpanLight>
-                        <SpanLight style={{color: 'white'}}>Válido por 6 meses</SpanLight>
+                        
 
                     </DivBoxBlack>
 
