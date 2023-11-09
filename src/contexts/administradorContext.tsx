@@ -1032,7 +1032,7 @@ const AdminProvider = ({ children }: iAdminProviderProps) => {
             title: "Plano Premium",
             quantity: 1,
             currency_id: "BRL",
-            unit_price: 50.0
+            unit_price: 1.0
           }
         ]
       }
