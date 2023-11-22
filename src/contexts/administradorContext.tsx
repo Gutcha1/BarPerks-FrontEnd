@@ -41,8 +41,6 @@ interface iAdminContext {
   adminLogin: (loginData: iLoginData) => Promise<void>;
   cookies: { token?: string };
   setCookie: (name: "token", value: string, options?: object | undefined) => void;
-  adminLoginGoogle: (email: string) => Promise<void>;
-  adminLoginFacebook: (email: string) => Promise<void>;
   adminAuthLogin: (token: string) => Promise<void>;
   sendEmailAdmin: (data: iSendEmail) => Promise<void>;
   resetPasswordAdmin: (token: string, data: { password: string; }) => Promise<void>;
@@ -261,43 +259,7 @@ const AdminProvider = ({ children }: iAdminProviderProps) => {
         }, 3500)  
     }
   }
-  const adminLoginFacebook = async (email: string): Promise<void> => {
-    try {
-        const res = await api.post('login-facebook-pub', { email: email })
-        setCookie('token', res.data.token)
 
-        toast.success('Login feito com sucesso!', {
-            position: "bottom-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-        });
-
-        setTimeout(() => {
-            navigate('/usuario')
-        }, 3500)  
-    }
-    catch (err) {
-        toast.error('Estabelecimento não cadastrado, faça o seu cadastro.', {
-            position: "bottom-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-        });
-        
-        setTimeout(() => {
-            navigate('/inscricao-estabelecimento')
-        }, 3500)  
-    }
-  }
   const adminAuthLogin = async (token: string): Promise<void> => {
     try {
         await api.get('pubs', {
@@ -1098,8 +1060,6 @@ const AdminProvider = ({ children }: iAdminProviderProps) => {
         adminLogin,
         cookies,
         setCookie,
-        adminLoginGoogle,
-        adminLoginFacebook,
         adminAuthLogin,
         sendEmailAdmin,
         resetPasswordAdmin,

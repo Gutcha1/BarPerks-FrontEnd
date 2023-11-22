@@ -1,4 +1,4 @@
-import { DivBox, DivBoxMobile, DivIcons, DivOlderAge, FacebookLoginDiv, FormStyle, InputFile, LabelFile, LinkForgotPassword, Span, SpanLogin } from "./style"
+import { DivBox, DivBoxMobile, DivOlderAge, FormStyle, InputFile, LabelFile, LinkForgotPassword, Span } from "./style"
 import { iFormInscricao, iFormInscricaoUser, iSectionFormInscricao, iSectionFormInscricaoUser } from "../../interfaces/inscricao/inscricao.interface";
 import { InputLogin, InputRegisterAdmin, InputRegisterUser } from "./Input";
 import ButtonForm from "./Button";
@@ -13,9 +13,6 @@ import { useDropzone } from "react-dropzone";
 import { AdminContext } from "../../contexts/administradorContext";
 import { toast } from "react-toastify";
 import { ClientContext } from "../../contexts/clienteContext";
-import GoogleLogin, { GoogleLoginResponse } from "react-google-login"
-import FacebookLogin, { ReactFacebookLoginInfo } from "react-facebook-login"
-import { BsFacebook } from 'react-icons/bs';
 
 
 const FormInscricaoAdmin = ({
@@ -248,8 +245,8 @@ const FormInscricaoUser = ({
 const FormLogin = () => {
     const [ recaptcha, setRecaptcha ] = useState(false)
     const url: string = window.location.pathname
-    const { clientLogin, clientLoginGoogle, clientLoginFacebook } = useContext(ClientContext)
-    const { adminLogin, adminLoginGoogle, adminLoginFacebook } = useContext(AdminContext)
+    const { clientLogin } = useContext(ClientContext)
+    const { adminLogin } = useContext(AdminContext)
 
     const { register, handleSubmit, formState: { errors } } = useForm<iFormLogin>({
         resolver: zodResolver(loginSchema),
@@ -278,25 +275,6 @@ const FormLogin = () => {
         }
     };
 
-    const responseGoogle = (res: GoogleLoginResponse | { readonly code: string, profileObj?: { googleId: string, imageUrl: string, email: string, name: string, givenName: string, familyName: string,} }) => {
-        if(url === '/login-cliente'){
-            clientLoginGoogle(res.profileObj!.email!)
-        }
-        else {
-            adminLoginGoogle(res.profileObj!.email!)    
-        }
-    }
-
-    const responseFacebook = (res: ReactFacebookLoginInfo | { status?: string | undefined, email?: string }) => {
-        if(url === '/login-cliente'){
-            clientLoginFacebook(res.email!)
-        }
-        else {
-            adminLoginFacebook(res.email!)    
-        }
-        
-    }
-
     return (
         <FormStyle onSubmit={handleSubmit(submitLogin)}>
             <InputLogin id="email" type="email" placeholder="E-mail" register={register} name="email"/>
@@ -315,30 +293,6 @@ const FormLogin = () => {
             </DivBox>
 
             <ButtonForm name="Fazer Login"/>
-
-            <SpanLogin>Ou faça seu login com:</SpanLogin>
-            <DivIcons>
-                <GoogleLogin
-                    clientId="481227944368-euu396jbn5pnafft63hn4d6rpsgqu121.apps.googleusercontent.com"
-                    buttonText="Login Google"
-                    onSuccess={responseGoogle}
-                    onFailure={responseGoogle}
-                    cookiePolicy="single_host_origin"
-                    isSignedIn={false}
-                />
-                <FacebookLoginDiv>
-                    <FacebookLogin
-                        appId="1273677963347786"
-                        autoLoad={false}
-                        fields="name,email,picture"
-                        textButton="Login Facebook"
-                        callback={responseFacebook}
-                        size="medium"
-                        cssClass="icon-facebook"
-                        icon={<BsFacebook size="22px" color="#fff"/>}
-                    />
-                </FacebookLoginDiv>
-            </DivIcons>
         </FormStyle>
     )
 }

@@ -35,8 +35,6 @@ interface iClientContext {
     clientLogin: (loginData: iLoginData) => Promise<void>;
     cookies: { token?: string };
     setCookie: (name: "token", value: string, options?: object | undefined) => void;
-    clientLoginGoogle: (email: string) => Promise<void>;
-    clientLoginFacebook: (email: string) => Promise<void>;
     clientAuthLogin: (token: string) => Promise<void>;
     sendEmailClient: (data: iSendEmail) => Promise<void>;
     resetPasswordClient: (token: string, data: { password: string }) => Promise<void>;
@@ -183,80 +181,7 @@ const ClientProvider = ({ children }: iClientProviderProps) => {
           });   
         }
     }
-    const clientLoginGoogle = async (email: string): Promise<void> => {
-        try {
-            const res = await api.post('login-google-client', { email: email })
-            setCookie('token', res.data.token)
- 
-            toast.success('Login feito com sucesso!', {
-                position: "bottom-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
 
-            setTimeout(() => {
-                navigate('/usuario')
-            }, 3500)  
-        }
-        catch (err) {
-            toast.error('Cliente não cadastrado, faça o seu cadastro.', {
-                position: "bottom-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
-            
-            setTimeout(() => {
-                navigate('/inscricao-cliente')
-            }, 3500)  
-        }
-    }
-    const clientLoginFacebook = async (email: string): Promise<void> => {
-        try {
-            const res = await api.post('login-facebook-client', { email: email })
-            setCookie('token', res.data.token)
- 
-            toast.success('Login feito com sucesso!', {
-                position: "bottom-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
-
-            setTimeout(() => {
-                navigate('/usuario')
-            }, 3500)  
-        }
-        catch (err) {
-            toast.error('Cliente não cadastrado, faça o seu cadastro.', {
-                position: "bottom-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
-            
-            setTimeout(() => {
-                navigate('/inscricao-cliente')
-            }, 3500)  
-        }
-    }
     const clientAuthLogin = async (token: string): Promise<void> => {
         try {
             await api.get('clients', {
@@ -602,8 +527,6 @@ const ClientProvider = ({ children }: iClientProviderProps) => {
                 setFile,
                 cookies,
                 setCookie,
-                clientLoginGoogle,
-                clientLoginFacebook,
                 clientAuthLogin,
                 sendEmailClient,
                 resetPasswordClient,
