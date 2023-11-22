@@ -242,6 +242,7 @@ const FormInscricaoUser = ({
     )
 }
 
+
 const FormLogin = () => {
     const [ recaptcha, setRecaptcha ] = useState(false)
     const url: string = window.location.pathname
