@@ -222,44 +222,6 @@ const AdminProvider = ({ children }: iAdminProviderProps) => {
     }
   }
 
-  const adminLoginGoogle = async (email: string): Promise<void> => {
-    try {
-        const res = await api.post('login-google-pub', { email: email })
-        setCookie('token', res.data.token)
-
-        toast.success('Login feito com sucesso!', {
-            position: "bottom-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-        });
-
-        setTimeout(() => {
-            navigate('/usuario')
-        }, 3500)  
-    }
-    catch (err) {
-        toast.error('Estabelecimento não cadastrado, faça o seu cadastro.', {
-            position: "bottom-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-        });
-        
-        setTimeout(() => {
-            navigate('/inscricao-estabelecimento')
-        }, 3500)  
-    }
-  }
-
   const adminAuthLogin = async (token: string): Promise<void> => {
     try {
         await api.get('pubs', {
