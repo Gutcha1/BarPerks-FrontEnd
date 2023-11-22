@@ -452,7 +452,7 @@ const AdminProvider = ({ children }: iAdminProviderProps) => {
           });
         }
       }
-      if(plan!.name == "Plano Padrão"){
+      else if(plan!.name == "Plano Padrão"){
         if(listRegisterClient.length < 500){
           await api.post('pub/registered-clients', data, {
             headers: {
