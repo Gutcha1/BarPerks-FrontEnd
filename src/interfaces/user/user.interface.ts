@@ -175,7 +175,7 @@ export interface iPub {
     pub: {
         id: number;
         name: string;
-        photo_url: string;
+        photo_url?: string;
     };
     client: {
         id: string;
