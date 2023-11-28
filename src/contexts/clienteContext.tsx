@@ -463,14 +463,7 @@ const ClientProvider = ({ children }: iClientProviderProps) => {
     }
     const getProducts = async (): Promise<void> => {
         try{
-            const token = cookies["token"]
-
-            const res = await api.get(`products`, { 
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`    
-                } 
-            })
+            const res = await api.get(`products/client/${searchPub?.pub.id}`)
 
             setListProducts(res.data)
         }
