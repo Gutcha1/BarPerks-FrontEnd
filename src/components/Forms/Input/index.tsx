@@ -1,14 +1,8 @@
 import { Input } from "./style"
-import { iInputAdmin, iInputUser } from "../../../interfaces/inscricao/inscricao.interface";
+import { iInput } from "../../../interfaces/inscricao/inscricao.interface";
 import { iInputLogin } from "../../../interfaces/login/login.interface";
 
-const InputRegisterAdmin = ({ id, type, placeholder, register, name }: iInputAdmin ) => {
-    return (
-            <Input id={id} type={type} placeholder={placeholder} { ...register(`${name}`) }/>
-    )
-}
-
-const InputRegisterUser = ({ id, type, placeholder, register, name }: iInputUser ) => {
+const InputForm = ({ id, type, placeholder, register, name }: iInput ) => {
     return (
             <Input id={id} type={type} placeholder={placeholder} { ...register(`${name}`) }/>
     )
@@ -20,4 +14,4 @@ const InputLogin = ({ id, type, placeholder, register, name }: iInputLogin ) => 
     )
 }
 
-export { InputRegisterAdmin, InputRegisterUser, InputLogin }
+export { InputForm, InputLogin }

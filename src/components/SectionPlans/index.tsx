@@ -1,10 +1,6 @@
-import { useContext } from "react"
-import { DivBoxBlack, DivPrice, ItemPlan, ButtonStartBlack, ButtonStartWhite, ListPlans, SectionAllPlans, SpanBestCost, SpanLight, SpanNumberPrice, SpanSignPrice, TitlePlan, TitlePlans } from "./style"
-import { AdminContext } from "../../contexts/administradorContext"
+import { DivBoxBlack, DivPrice, ItemPlan, LinkStartBlack, LinkStartWhite, ListPlans, SectionAllPlans, SpanBestCost, SpanLight, SpanNumberPrice, SpanSignPrice, TitlePlan, TitlePlans } from "./style"
 
 const SectionPlans = () => {
-    const { buyPlan } = useContext(AdminContext)
-
     return (
         <SectionAllPlans>
             <TitlePlans>Explore nossos planos</TitlePlans>
@@ -21,10 +17,10 @@ const SectionPlans = () => {
                     <SpanLight>Todo mês</SpanLight>
                     <SpanLight>Válido por 6 meses</SpanLight>
 
-                    <ButtonStartBlack type="button" onClick={() => buyPlan('padrao')}>Começar</ButtonStartBlack>
+                    <LinkStartBlack href="/inscricao">Começar</LinkStartBlack>
 
-                    <SpanLight style={{width: '100%'}}>- Até 500 clientes mensais</SpanLight>
-                    <SpanLight style={{width: '100%'}}>- Válido por 6 meses</SpanLight>
+                    <SpanLight>- Benefício 1</SpanLight>
+                    <SpanLight>- Benefício 2</SpanLight>
                 </ItemPlan>
 
                 <ItemPlan style={{padding: '0px'}}>
@@ -42,11 +38,11 @@ const SectionPlans = () => {
 
                     </DivBoxBlack>
 
-                    <ButtonStartWhite type="button" onClick={() => buyPlan('premium')}>Começar</ButtonStartWhite>
+                    <LinkStartWhite href="/inscricao">Começar</LinkStartWhite>
 
-                    <SpanLight style={{padding: '0px 40px'}}>- Clientes ilimitados</SpanLight>
-                    <SpanLight style={{padding: '0px 40px'}}>- Suporte prioritário</SpanLight>
-                    <SpanLight style={{padding: '0px 40px'}}>- Válido por 12 meses</SpanLight>
+                    <SpanLight style={{padding: '0px 40px'}}>- Benefício 1</SpanLight>
+                    <SpanLight style={{padding: '0px 40px'}}>- Benefício 2</SpanLight>
+                    <SpanLight style={{padding: '0px 40px'}}>- Benefício 3</SpanLight>
                 </ItemPlan>
             </ListPlans>
         </SectionAllPlans>

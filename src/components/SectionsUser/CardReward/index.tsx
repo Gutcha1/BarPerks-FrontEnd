@@ -1,18 +1,10 @@
 import { DivBox, DivBoxGray, DivBoxInfoMobile, DivBoxMobile, ItemListReward, SpanInfo, SpanInfoMobile, TitleInfo, TitleInfoMobile } from "./style"
 
-interface iCardReward {
-    rescue_code?: string;
-    status?: string;
-    data?: string;
-    recompensa?: string;
-    nome_bar?: string;
-}
-
-const CardReward = ({ rescue_code, status, data, recompensa, nome_bar }: iCardReward) => {
+const CardReward = () => {
     return (
         <ItemListReward>
             <DivBox>
-                <TitleInfo>Código:</TitleInfo>
+                <TitleInfo>ID Recompensa:</TitleInfo>
                 <TitleInfo>Status:</TitleInfo>
                 <TitleInfo>Data:</TitleInfo>
                 <TitleInfo>Recompensa:</TitleInfo>
@@ -20,79 +12,74 @@ const CardReward = ({ rescue_code, status, data, recompensa, nome_bar }: iCardRe
             </DivBox>
 
             <DivBoxGray>
-                <SpanInfo>{rescue_code}</SpanInfo>
-                <SpanInfo>{status}</SpanInfo>
-                <SpanInfo>{data}</SpanInfo>
-                <SpanInfo>{recompensa}</SpanInfo>
-                <SpanInfo>{nome_bar}</SpanInfo>
+                <SpanInfo>254356</SpanInfo>
+                <SpanInfo>Resgatada</SpanInfo>
+                <SpanInfo>26/09/2023</SpanInfo>
+                <SpanInfo>Balde de Cerveja Original - 6 unidades</SpanInfo>
+                <SpanInfo>BalPd</SpanInfo>
             </DivBoxGray>
 
             <DivBoxMobile>
                 <DivBoxInfoMobile>
                     <TitleInfoMobile>ID Recompensa:</TitleInfoMobile>
-                    <SpanInfoMobile>{rescue_code}</SpanInfoMobile>
+                    <SpanInfoMobile>254356</SpanInfoMobile>
                 </DivBoxInfoMobile>
 
                 <DivBoxInfoMobile>
                     <TitleInfoMobile>Status:</TitleInfoMobile>
-                    <SpanInfoMobile>{status}</SpanInfoMobile>
+                    <SpanInfoMobile>Resgatada</SpanInfoMobile>
                 </DivBoxInfoMobile>
 
                 <DivBoxInfoMobile>
                     <TitleInfoMobile>Data:</TitleInfoMobile>
-                    <SpanInfoMobile>{data}</SpanInfoMobile>
+                    <SpanInfoMobile>26/08/2023</SpanInfoMobile>
                 </DivBoxInfoMobile>
 
                 <DivBoxInfoMobile>
                     <TitleInfoMobile>Recompensa:</TitleInfoMobile>
-                    <SpanInfoMobile>{recompensa}</SpanInfoMobile>
+                    <SpanInfoMobile>Balde de Original - 5535</SpanInfoMobile>
                 </DivBoxInfoMobile>
 
 
                 <DivBoxInfoMobile>
                     <TitleInfoMobile>Nome do Bar:</TitleInfoMobile>
-                    <SpanInfoMobile>{nome_bar}</SpanInfoMobile>
+                    <SpanInfoMobile>BalPd</SpanInfoMobile>
                 </DivBoxInfoMobile>
             </DivBoxMobile>
         </ItemListReward>
     )
 }
 
-const CardRewardWithoutTitle = ({ rescue_code, status, data, recompensa, nome_bar }: iCardReward) => {
+const CardRewardWithoutTitle = () => {
     return (
         <ItemListReward>
             <DivBoxGray>
-                <SpanInfo>{rescue_code}</SpanInfo>
-                <SpanInfo>{status}</SpanInfo>
-                <SpanInfo>{data}</SpanInfo>
-                <SpanInfo>{recompensa}</SpanInfo>
-                <SpanInfo>{nome_bar}</SpanInfo>
+                <SpanInfo>254356</SpanInfo>
+                <SpanInfo>Resgatada</SpanInfo>
+                <SpanInfo>26/09/2023</SpanInfo>
+                <SpanInfo>Balde de Cerveja Original - 6 unidades</SpanInfo>
+                <SpanInfo>BalPd</SpanInfo>
             </DivBoxGray>
 
             <DivBoxMobile>
                 <DivBoxInfoMobile>
                     <TitleInfoMobile>ID Recompensa:</TitleInfoMobile>
-                    <SpanInfoMobile>{rescue_code}</SpanInfoMobile>
+                    <SpanInfoMobile>254356</SpanInfoMobile>
                 </DivBoxInfoMobile>
 
                 <DivBoxInfoMobile>
                     <TitleInfoMobile>Status:</TitleInfoMobile>
-                    <SpanInfoMobile>{status}</SpanInfoMobile>
+                    <SpanInfoMobile>Resgatada</SpanInfoMobile>
                 </DivBoxInfoMobile>
 
                 <DivBoxInfoMobile>
                     <TitleInfoMobile>Data:</TitleInfoMobile>
-                    <SpanInfoMobile>{data}</SpanInfoMobile>
+                    <SpanInfoMobile>26/08/2023</SpanInfoMobile>
                 </DivBoxInfoMobile>
 
                 <DivBoxInfoMobile>
                     <TitleInfoMobile>Recompensa:</TitleInfoMobile>
-                    <SpanInfoMobile>{recompensa}</SpanInfoMobile>
-                </DivBoxInfoMobile>
-
-                <DivBoxInfoMobile>
-                    <TitleInfoMobile>Nome do bar:</TitleInfoMobile>
-                    <SpanInfoMobile>{nome_bar}</SpanInfoMobile>
+                    <SpanInfoMobile>Balde de Original - 5535</SpanInfoMobile>
                 </DivBoxInfoMobile>
             </DivBoxMobile>
         </ItemListReward>

@@ -44,29 +44,29 @@ const Footer = () => {
                             <DivBoxInfoUnique>
                                 <TitleInfo>Email</TitleInfo>
 
-                                <ParagraphInfo>barperks68@gmail.com</ParagraphInfo>
+                                <ParagraphInfo>myperks@gmail.com</ParagraphInfo>
                             </DivBoxInfoUnique>
                         </DivBoxInfo>
 
                         <DivBoxInfo style={{justifyContent: 'flex-start'}}>
                             <TitleInfo style={{marginBottom: '5px'}}>Links rápidos</TitleInfo>
 
-                            <LinkInfo href={'/termos-e-condicoes'}>Termos e condições</LinkInfo>
-                            <LinkInfo href={'politica-de-privacidade'}>Política de privacidade</LinkInfo>
+                            <LinkInfo to={''}>Termos e condições</LinkInfo>
+                            <LinkInfo to={''}>Política e privacidade</LinkInfo>
                         </DivBoxInfo>
 
                         <DivBoxInfo style={{justifyContent: 'flex-start', gap: '5px'}}>
                             <DivBoxInfoUnique style={{flexDirection: 'initial', gap: '5px', alignItems: 'center', marginBottom: '5px'}}>
                                 <TitleInfo>Linkedin</TitleInfo>
-                                <LinkIcon href={'http://www.linkedin.com/in/bar-perks-a00733294'} target="blank">
+                                <LinkIcon to={''}>
                                     <ImageIcon src={IconLinkedin} alt={'icon-likedin'}/>
                                 </LinkIcon>
                             </DivBoxInfoUnique>
 
                             <DivBoxInfoUnique style={{flexDirection: 'initial', gap: '5px', alignItems: 'center'}}>
                                 <TitleInfo>Instagram</TitleInfo>
-                                <LinkIcon href={'https://www.instagram.com/barperks/'} target="blank">
-                                    <ImageIcon src={IconInstagram} alt={'icon-instagram'}/>
+                                <LinkIcon to={''}>
+                                    <ImageIcon src={IconInstagram} alt={'icon-likedin'}/>
                                 </LinkIcon>
                             </DivBoxInfoUnique>
                         </DivBoxInfo>

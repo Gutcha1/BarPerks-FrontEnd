@@ -1,9 +1,9 @@
-import { iSectionFormInscricao, iSectionFormInscricaoUser } from "../../interfaces/inscricao/inscricao.interface";
-import { FormInscricaoAdmin, FormInscricaoUser } from "../Forms";
+import { iSectionFormInscricao } from "../../interfaces/inscricao/inscricao.interface";
+import { FormInscricao } from "../Forms";
 import TitleForm from "../Forms/Title";
 import { SectionFormInscricao } from './style'
 
-const SectionInscricaoAdmin = ({
+const SectionInscricao = ({
   title,
   name,
   socialNumber,
@@ -15,6 +15,7 @@ const SectionInscricaoAdmin = ({
   state,
   city,
   postalCode,
+  photo,
   register,
   handleSubmit,
   errors
@@ -23,7 +24,7 @@ const SectionInscricaoAdmin = ({
     <SectionFormInscricao>
       <TitleForm title={title}/>
 
-      <FormInscricaoAdmin
+      <FormInscricao
         title=""
         name={name} 
         socialNumber={socialNumber}
@@ -35,47 +36,15 @@ const SectionInscricaoAdmin = ({
         state={state}
         city={city}
         postalCode={postalCode}
+        photo={photo}
         register={register}
         handleSubmit={handleSubmit}
         errors={errors}
+        
       />
     </SectionFormInscricao>
   );
 };
 
 
-const SectionInscricaoUser = ({
-  title,
-  name,
-  birthDate,
-  socialNumber,
-  email,
-  password,
-  passwordRepeated,
-  phone,
-  register,
-  handleSubmit,
-  errors
-}: iSectionFormInscricaoUser) =>{
-  return (
-    <SectionFormInscricao>
-      <TitleForm title={title}/>
-
-      <FormInscricaoUser
-        title=""
-        name={name}
-        birthDate={birthDate}
-        socialNumber={socialNumber}
-        email={email}
-        password={password} 
-        passwordRepeated={passwordRepeated}
-        phone={phone}
-        register={register}
-        handleSubmit={handleSubmit}
-        errors={errors}
-      />
-    </SectionFormInscricao>
-  )
-}
-
-export { SectionInscricaoAdmin, SectionInscricaoUser }
+export default SectionInscricao;

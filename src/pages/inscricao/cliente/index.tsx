@@ -1,15 +1,15 @@
 import { useForm } from "react-hook-form";
 import Footer from "../../../components/Footer";
 import Header from "../../../components/Header";
-import { SectionInscricaoUser} from "../../../components/SectionInscricao";
+import SectionInscricao from "../../../components/SectionInscricao";
 import { Main } from "../style";
-import { iFormInscricaoUser } from "../../../interfaces/inscricao/inscricao.interface";
+import { iFormInscricao } from "../../../interfaces/inscricao/inscricao.interface";
 import { registerClientSchema } from "../../../schemas/inscricao.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 
 const InscricaoClientePage = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<iFormInscricaoUser>({
+  const { register, handleSubmit, formState: { errors } } = useForm<iFormInscricao>({
     resolver: zodResolver(registerClientSchema),
   });
 
@@ -18,15 +18,19 @@ const InscricaoClientePage = () => {
       <Header />
 
       <Main>
-        <SectionInscricaoUser
+        <SectionInscricao
           title="Inscreva-se (Cliente)"
           name="Nome"
-          birthDate="Data de nascimento"
           socialNumber="CPF"
           email="E-mail"
           password="Senha"
           passwordRepeated="Repita a senha"
           phone="Telefone"
+          address="Endereço"
+          state="Estado"
+          city="Cidade"
+          postalCode="Código postal(CEP)"
+          photo="Foto"
           register={register}
           handleSubmit={handleSubmit}
           errors={errors}

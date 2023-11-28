@@ -40,12 +40,12 @@ const Header = () => {
                 }
 
                 <NavLinks>
-                    <LinkSection href={'/'}>Início</LinkSection>
-                    <LinkSection href={'/sobre'}>Sobre</LinkSection>
-                    <LinkSection href={'/planos'}>Planos</LinkSection>
+                    <LinkSection to={'/'}>Início</LinkSection>
+                    <LinkSection to={'/sobre'}>Sobre</LinkSection>
+                    <LinkSection to={'/planos'}>Planos</LinkSection>
                     <BoxLinkLog>
-                        <LinkLog href={'/inscricao'}>Inscreva-se</LinkLog>
-                        <LinkLog href={'/login'} >Login</LinkLog>
+                        <LinkLog to={'/inscricao'}>Inscreva-se</LinkLog>
+                        <LinkLog to={'/login'} >Login</LinkLog>
                     </BoxLinkLog>
                 </NavLinks>
             </DivBox>
@@ -54,13 +54,13 @@ const Header = () => {
                 menuMobile !== false ?
                 <NavLinksMobile>
                     <DivBoxMobile>
-                        <LinkSectionMobile href={'/'}>Início</LinkSectionMobile>
-                        <LinkSectionMobile href={'/sobre'}>Sobre</LinkSectionMobile>
-                        <LinkSectionMobile href={'/planos'}>Planos</LinkSectionMobile>
+                        <LinkSectionMobile to={'/'}>Início</LinkSectionMobile>
+                        <LinkSectionMobile to={'/sobre'}>Sobre</LinkSectionMobile>
+                        <LinkSectionMobile to={'/planos'}>Planos</LinkSectionMobile>
                     </DivBoxMobile>
 
-                    <LinkLogMobile href={'/inscricao'}>Inscreva-se</LinkLogMobile>
-                    <LinkLogMobile href={'/login'}>Login</LinkLogMobile>
+                    <LinkLogMobile to={'/inscricao'}>Inscreva-se</LinkLogMobile>
+                    <LinkLogMobile to={'/login'}>Login</LinkLogMobile>
                 </NavLinksMobile>
                 :
                 <></>

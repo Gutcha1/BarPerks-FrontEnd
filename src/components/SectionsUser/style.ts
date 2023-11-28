@@ -86,7 +86,6 @@ export const DivSearchPub = styled.div`
         display: flex;
         align-items: center;
         gap: 15px;
-        max-width: 85vw;
 
         @media(max-width: 800px){
             gap: 10px;
@@ -97,7 +96,7 @@ export const DivSearchPub = styled.div`
             height: 70px;
             background-color: var(--grey-0);
             border-radius: 50%;
-            padding: 5px;
+            padding: 10px;
 
             @media(max-width: 800px){
                 width: 60px;
@@ -105,45 +104,11 @@ export const DivSearchPub = styled.div`
             }
         }
 
-        div{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 5px;
-            max-width: 100%;
-
-            @media(max-width: 440px){
-                margin-top: 25px;
-            }
-
-            span{
-                display: flex;
-                justify-content: center;
-                width: 100%;
-                color: var(--grey-0);
-                font-size: var(--font-size-4);
-                font-weight: 600;
-                background-color: var(--yellow-1);
-                padding: 5px 30px;
-
-                @media(max-width: 440px){
-                    padding: 5px;
-                    text-align: center;
-                    width: 94%;
-                }
-            }
-
-            h2{
-                color: var(--grey-0);
-                font-size: var(--font-title-2);
-                font-weight: 600;
-
-                @media(max-width: 800px){
-                    font-size: var(--font-size-1);
-                }
-            }
+        h2{
+            color: var(--grey-0);
+            font-size: var(--font-title-2);
+            font-weight: 600;
         }
-
     }
 `
 

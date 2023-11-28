@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const FooterDouble = styled.footer`
     display: flex;
@@ -96,7 +97,7 @@ export const TitleCopyright = styled.h2`
     color: var(--white-fixed);
 `
 
-export const LinkInfo = styled.a`
+export const LinkInfo = styled(Link)`
     display: flex;
     text-decoration: underline;
     color: var(--grey-0);
@@ -105,7 +106,7 @@ export const LinkInfo = styled.a`
     cursor: pointer;
 `
 
-export const LinkIcon = styled.a`
+export const LinkIcon = styled(Link)`
     cursor: pointer;
 `
 

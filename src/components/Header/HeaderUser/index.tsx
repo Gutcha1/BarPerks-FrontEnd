@@ -1,19 +1,13 @@
-import { Link, useNavigate } from "react-router-dom"
-import { CloseMenuIcon, DivBox, DivBoxLinksMobile, Figure, LinkMobile, LinkMobileExit, MenuIcon, MenuNav } from "./style"
+import { useNavigate } from "react-router-dom"
+import { CloseMenuIcon, DivBox, DivBoxLinksMobile, Figure, LinkMobile, MenuIcon, SpanName } from "./style"
 import { DivBoxIcon, HeaderUserEdit, ImgLogo, LinkHeader, NavLinks, NavLinksMobile, TitleLogo, UserIcon } from "./style"
 import IconLogo from '../../../assets/images/icon-barperks.svg'
 import { BiSolidUser } from "react-icons/bi"
-import { useContext, useState } from "react"
-import { ClientContext } from "../../../contexts/clienteContext"
-import { AdminContext } from "../../../contexts/administradorContext"
-import { FaArrowDown } from "react-icons/fa"
-
+import { useState } from "react"
 
 const HeaderUserAdmin = () => {
     const navigate = useNavigate()
     const [menuMobile, openMenuMobile] = useState(false)
-    const { adminInfo, exitAdmin } = useContext(AdminContext)
-    const [ navAdmin, setNavAdmin ] = useState(false)
 
     return (
         <HeaderUserEdit>
@@ -26,26 +20,16 @@ const HeaderUserAdmin = () => {
                 <NavLinks>
                     <LinkHeader to={"/admin/registro-pontuacao"}>Registrar Pontuação</LinkHeader>
                     <LinkHeader to={"/admin/cadastrar-produtos"}>Cadastrar Produtos</LinkHeader>
-                    <LinkHeader to={"/admin/cadastrar-cliente"}>Cadastrar Cliente</LinkHeader>
+                    <LinkHeader to={"/admin/cadastrar-cliente"}>Cadastrar Usuário</LinkHeader>
                     <LinkHeader to={"/admin/buscar-usuario"}>Buscar Usuário</LinkHeader>
 
-                    <DivBoxIcon onClick={() => navAdmin ? setNavAdmin(false) : setNavAdmin(true)}>
+                    <DivBoxIcon onClick={() => navigate("/admin")}>
                         <UserIcon>
-                            {
-                                adminInfo?.photo_url ? 
-                                <img src={adminInfo.photo_url} alt="image-user"/>
-                                :
-                                <BiSolidUser size="26px"/>
-                            }                        
+                            <BiSolidUser size="26px"/>
                         </UserIcon>
 
-                        <FaArrowDown size="26px"/>
-                        <MenuNav style={navAdmin ? {display: "flex"} : {display: "none"}}>
-                            <Link className="link" to="">Meu Plano</Link>
-                            <Link className="link" to="/admin">Minha Conta</Link>
-                            <a className="exit-link" onClick={() => exitAdmin()}>Sair</a>
-                        </MenuNav>
-                    </DivBoxIcon>                    
+                        <SpanName>Gustavo Barbalho</SpanName>
+                    </DivBoxIcon>
                 </NavLinks>
 
                 {
@@ -62,9 +46,8 @@ const HeaderUserAdmin = () => {
                             <LinkMobile to={'/admin'}>Editar Usuário</LinkMobile>
                             <LinkMobile to={'/admin/registro-pontuacao'}>Registar Pontuação</LinkMobile>
                             <LinkMobile to={'/admin/cadastrar-produtos'}>Cadastrar Produtos</LinkMobile>
-                            <LinkMobile to={'/admin/cadastrar-cliente'}>Cadastrar Cliente</LinkMobile>
+                            <LinkMobile to={'/admin/cadastrar-cliente'}>Cadastrar Usuário</LinkMobile>
                             <LinkMobile to={'/admin/buscar-usuario'}>Buscar Usuário</LinkMobile>
-                            <LinkMobileExit>Sair da Página</LinkMobileExit>
                         </DivBoxLinksMobile>
                     </NavLinksMobile>
                     :
@@ -77,8 +60,6 @@ const HeaderUserAdmin = () => {
 const HeaderUser = () => {
     const navigate = useNavigate()
     const [menuMobile, openMenuMobile] = useState(false)
-    const { clientInfo, exitClient } = useContext(ClientContext)
-    const [ navClient, setNavClient ] = useState(false)
 
     return (
         <HeaderUserEdit>
@@ -89,27 +70,17 @@ const HeaderUser = () => {
                 </Figure>
 
                 <NavLinks>
-                    <LinkHeader style={{width: "fit-content"}} to={"/usuario/historico-resgates"}>Histórico de Resgates</LinkHeader>
-                    <LinkHeader style={{width: "fit-content"}} to={"/usuario"}>Editar Perfil</LinkHeader>
-                    <LinkHeader style={{width: "fit-content"}} to={"/usuario/resgatar-recompensas"}>Resgatar Recompensas</LinkHeader>
+                    <LinkHeader to={"/usuario/historico-resgates"}>Histórico de Resgates</LinkHeader>
+                    <LinkHeader to={"/usuario"}>Editar Perfil</LinkHeader>
+                    <LinkHeader to={"/usuario/resgatar-recompensas"}>Resgatar Recompensas</LinkHeader>
 
-                    <DivBoxIcon onClick={() => navClient ? setNavClient(false) : setNavClient(true)}>
+                    <DivBoxIcon onClick={() => navigate("/usuario")}>
                         <UserIcon>
-                            {
-                                clientInfo?.photo_url ? 
-                                <img src={clientInfo.photo_url} alt="image-user"/>
-                                :
-                                <BiSolidUser size="26px"/>
-                            }                        
+                            <BiSolidUser size="26px"/>
                         </UserIcon>
 
-                        <FaArrowDown size="26px"/>
-                        <MenuNav style={navClient ? {display: "flex"} : {display: "none"}}>
-                            <Link className="link" to="/usuario/qrcode">Ler QR Code</Link>
-                            <Link className="link" to="/usuario">Minha Conta</Link>
-                            <a className="exit-link" onClick={() => exitClient()}>Sair</a>
-                        </MenuNav>
-                    </DivBoxIcon> 
+                        <SpanName>Gustavo Barbalho - 150pts</SpanName>
+                    </DivBoxIcon>
                 </NavLinks>
 
                 {
@@ -126,8 +97,6 @@ const HeaderUser = () => {
                             <LinkMobile to={'/usuario/historico-resgates'}>Histórico de Resgates</LinkMobile>
                             <LinkMobile to={'/usuario'}>Editar Perfil</LinkMobile>
                             <LinkMobile to={'/usuario/resgatar-recompensas'}>Resgatar Recompensas</LinkMobile>
-                            <LinkMobile to={'/usuario/qrcode'}>Ler QR Code</LinkMobile>
-                            <LinkMobileExit onClick={() => exitClient()}>Sair da Página</LinkMobileExit>
                         </DivBoxLinksMobile>
                     </NavLinksMobile>
                     :

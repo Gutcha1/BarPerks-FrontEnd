@@ -1,68 +1,40 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { InputCalculatePoints, InputUser, InputUserRegisterClient, InputUserRegisterPoints, InputUserRegisterProduct, InputUserSearchClient } from "../Input"
-import { DivBoxInput, DivBtns, Form, Label, Span, InputFile, DivInputsYellow, SpanFile, ButtonCalculate, DivInputCalculate, DivQrCode } from "./style"
+import { InputUser, InputUserRegisterClient, InputUserRegisterPoints, InputUserRegisterProduct, InputUserSearchClient } from "../Input"
+import { ButtonSearch, DivBoxInput, DivBtns, Form, Label, OptionSelect, SelectMenu, Span, DivBoxInputSearch, InputFile, DivInputsYellow } from "./style"
 import { SubmitHandler, useForm } from "react-hook-form";
-import { iFormAdminEdit, iFormRegisterClient, iFormSearchClient, iFormSearchPub, iFormUserEdit, iFormUserRegisterPoints, iRegisterProduct } from "../../../interfaces/user/user.interface";
+import { iFormRegisterClient, iFormSearchClient, iFormSearchPub, iFormUserEdit, iFormUserRegisterPoints, iRegisterProduct } from "../../../interfaces/user/user.interface";
 import { userEditSchema, userRegisterClientSchema, userRegisterPointsSchema, userRegisterProductSchema, userSearchClientSchema, userSearchPubSchema } from "../../../schemas/user.schema";
-import { ButtonEditProducts, ButtonListRegisterClient, ButtonUser, ButtonUserSmall } from "../Button";
-import { useCallback, useContext, useState } from "react";
-import { ClientContext } from "../../../contexts/clienteContext";
-import { useDropzone } from "react-dropzone";
-import { AdminContext } from "../../../contexts/administradorContext";
-import QrCode from "react-qr-code"
+import { ButtonUser, ButtonUserSmall } from "../Button";
 
 const FormUserAdminEdit = () => {
-    const { dropFile, setFile, adminInfo, updateAdmin } = useContext(AdminContext)
-
-    const onDrop = useCallback((file: File[]) => {
-        setFile(file[0])
-    }, [setFile])
-
-    const { getRootProps, getInputProps } = useDropzone({
-        onDrop,
-        accept: {
-            "image/jpeg": [".jpg", ".jpeg"],
-            "image/png": [".png"]
-        }
-    })
-
-    const { register, handleSubmit, formState: { errors } } = useForm<iFormAdminEdit>({
+    const { register, handleSubmit, formState: { errors } } = useForm<iFormUserEdit>({
         resolver: zodResolver(userEditSchema),
     });
 
-    const submitEditUser: SubmitHandler<iFormAdminEdit> = (data: iFormAdminEdit) => {
-        const newData: iFormAdminEdit = {
-            name: data.name ? data.name : adminInfo?.name,
-            social_number: data.social_number ? data.social_number : adminInfo?.social_number,
-            email: data.email ? data.email : adminInfo?.email,
-            password: data.password ? data.password : '',
-            telephone: data.telephone ? data.telephone : adminInfo?.telephone,
-        }
+    const submitEditUser: SubmitHandler<iFormUserEdit> = (data: iFormUserEdit) => {
+        alert("fslts")           
+        console.log(data)
 
-        if (newData.password === ''){
-            delete newData.password
-        }
-        
-        updateAdmin(newData, adminInfo!.id)
+        return;
     };
 
     return (
         <Form onSubmit={handleSubmit(submitEditUser)}>
             <DivBoxInput>
                 <Label htmlFor="nome">Nome:</Label>
-                <InputUser id="nome" name="name" type="text" register={register} placeholder={adminInfo?.name}/>
+                <InputUser id="nome" name="name" type="text" register={register}/>
                 { errors.name?.message ? <Span>{errors.name.message}</Span> : null }
             </DivBoxInput>
 
             <DivBoxInput>
                 <Label htmlFor="cpf">CPF/CNPJ:</Label>
-                <InputUser id="cpf" name="cpf" type="text" register={register} placeholder={adminInfo?.social_number}/>
-                { errors.social_number?.message ? <Span>{errors.social_number.message}</Span> : null }
+                <InputUser id="cpf" name="cpf" type="text" register={register}/>
+                { errors.cpf?.message ? <Span>{errors.cpf.message}</Span> : null }
             </DivBoxInput>
 
             <DivBoxInput>
                 <Label htmlFor="mail">Email:</Label>
-                <InputUser id="mail" name="email" type="email" register={register} placeholder={adminInfo?.email}/>
+                <InputUser id="mail" name="email" type="email" register={register}/>
                 { errors.email?.message ? <Span>{errors.email.message}</Span> : null }
             </DivBoxInput>
 
@@ -80,15 +52,14 @@ const FormUserAdminEdit = () => {
 
             <DivBoxInput>
                 <Label htmlFor="telephone">Telefone/Celular:</Label>
-                <InputUser id="telephone" name="telephone" type="text" register={register} placeholder={adminInfo?.telephone}/>
-                { errors.telephone?.message ? <Span>{errors.telephone.message}</Span> : null }
+                <InputUser id="telephone" name="phone" type="text" register={register}/>
+                { errors.phone?.message ? <Span>{errors.phone.message}</Span> : null }
             </DivBoxInput>
 
-            <DivBoxInput { ...getRootProps() }>
+            <DivBoxInput>
                 <Label htmlFor="photo">Foto:</Label>
-                <InputFile id="photo" type="button" value="Escolher arquivo"/>
-                <InputFile style={{display: "none"}} id="photo" placeholder="Escolher arquivo" { ...getInputProps() } />
-                <span style={{display: 'flex', marginLeft: '5px', cursor: 'pointer'}}>{dropFile === null ? 'Nenhum arquivo selecionado...' : dropFile.name}</span>
+                <InputFile id="photo" type="file" { ...register("photo") }/>
+                { errors.photo?.message ? <Span>{errors.photo.message}</Span> : null }
             </DivBoxInput>
 
             <DivBtns>
@@ -104,73 +75,46 @@ const FormUserRegisterPoints = () => {
         resolver: zodResolver(userRegisterPointsSchema),
     });
 
-    const submitRegisterPoints: SubmitHandler<iFormUserRegisterPoints> = async (data: iFormUserRegisterPoints) => {
-        const newData = {
-            name: "notname",
-            cpf: data.cpf,
-            points: value,
-        }
 
-        updatePointsRegisterClient(newData)
+    const submitRegisterPoints: SubmitHandler<iFormUserRegisterPoints> = (data: iFormUserRegisterPoints) => {
+        alert("fslts")           
+        console.log(data)
+
+        return;
     };
-
-    const [ value, setValue ] = useState('')
-    const [ calculate, setCalculate ] = useState(false)
-    const { updatePointsRegisterClient, linkQrCode } = useContext(AdminContext)
 
     return (
         <Form onSubmit={handleSubmit(submitRegisterPoints)} style={{alignItems: "center", gap: "15px", marginTop: "20px"}}>
-            <InputUserRegisterPoints id="socialNumber" name="cpf" type="text" register={register} placeholder="CPF do cliente"/>
+            <DivBoxInputSearch>
+                <InputUserRegisterPoints id="search" name="name" type="text" register={register} placeholder="Buscar Usuário"/>
+                <ButtonSearch>Buscar</ButtonSearch>
+            </DivBoxInputSearch>
+            { errors.name?.message ? <Span style={{marginTop: "-15px"}}>{errors.name.message}</Span> : null }
+
+            <InputUserRegisterPoints id="socialNumber" name="cpf" type="text" register={register} placeholder="CPF"/>
             { errors.cpf?.message ? <Span style={{marginTop: "-15px"}}>{errors.cpf.message}</Span> : null }
 
-            <InputCalculatePoints register={register} setValue={setValue}/>
-            { errors.points?.message ? <Span style={{marginTop: "-15px"}}>{errors.points.message}</Span> : null }
-
-            <ButtonCalculate type="button" onClick={() => setCalculate(true)}>Calcular</ButtonCalculate>
-
-            <DivInputCalculate>
-                <h4>A pontuação gerada foi:</h4>
-                <input type="text" placeholder="---" value={calculate && value !== "" ? `${value} pts` : ""}/>
-            </DivInputCalculate>
+            <SelectMenu { ...register("product") }>
+                <OptionSelect value="">Produto</OptionSelect>
+            </SelectMenu>
+            { errors.product?.message ? <Span style={{marginTop: "-15px"}}>{errors.product.message}</Span> : null }
 
             <ButtonUser type="submit" text="Registrar Pontuação"/>
-
-            <DivQrCode>
-                <h3>Valide sua pontuação. Basta escanear o QrCode:</h3>
-
-                <QrCode
-                    value={linkQrCode ? `${window.location.origin}/usuario/qrcode/${linkQrCode}` : ""}
-                />
-
-                <span>Ou digite o código:</span>
-
-                <span className="link-qrcode">{linkQrCode}</span>
-            </DivQrCode>
         </Form>
     )
 }
 
 const FormUserRegisterProducts = () => {
-    const { registerProduct, dropFile, setFile } = useContext(AdminContext)
-
     const { register, handleSubmit, formState: { errors } } = useForm<iRegisterProduct>({
         resolver: zodResolver(userRegisterProductSchema),
     });
 
-    const onDrop = useCallback((file: File[]) => {
-        setFile(file[0])
-    }, [setFile])
-
-    const { getRootProps, getInputProps } = useDropzone({
-        onDrop,
-        accept: {
-            "image/jpeg": [".jpg", ".jpeg"],
-            "image/png": [".png"]
-        }
-    })
 
     const submitProduct: SubmitHandler<iRegisterProduct> = (data: iRegisterProduct) => {
-        registerProduct(data)
+        alert("fslts")           
+        console.log(data)
+
+        return;
     };
     
     return (
@@ -181,35 +125,27 @@ const FormUserRegisterProducts = () => {
             <InputUserRegisterProduct name="code" type="text" register={register} placeholder="Código do Produto"/>
             { errors.code?.message ? <Span style={{marginTop: "-15px"}}>{errors.code.message}</Span> : null }
 
-            <InputUserRegisterProduct name="value" type="text" register={register} placeholder="Pontos Necessários"/>
-            { errors.value?.message ? <Span style={{marginTop: "-15px"}}>{errors.value.message}</Span> : null }
+            <InputUserRegisterProduct name="points" type="text" register={register} placeholder="Pontos Necessários"/>
+            { errors.points?.message ? <Span style={{marginTop: "-15px"}}>{errors.points.message}</Span> : null }
 
-            <DivBoxInput { ...getRootProps() } style={{display: "flex", flexDirection: "column"}}>
-                <Label style={{display: "flex"}} htmlFor="photo">Foto do produto:</Label>
-                <div style={{display: "flex", flexDirection: "column"}}>
-                    <InputFile type="button" id="photo" value="Escolher arquivo"/>
-                    <InputFile style={{display: "none"}} id="photo" placeholder="Escolher arquivo" { ...getInputProps() } />
-                    <SpanFile>{dropFile === null ? 'Nenhum arquivo selecionado...' : dropFile.name}</SpanFile>
-                </div>
-            </DivBoxInput>
+            <ButtonUser type="submit" text="Registrar Produto" margin="30px"/>
+            <ButtonUser type="submit" text="Editar Produtos" margin="0px"/>
 
-            <ButtonUser type="submit" text="Registrar Produto" margin="10px"/>
-            <ButtonEditProducts/>
         </Form>
     )
 }
 
 const FormUserRegisterClient = () => {
-    const { registerClient } = useContext(AdminContext)
     const { register, handleSubmit, formState: { errors } } = useForm<iFormRegisterClient>({
         resolver: zodResolver(userRegisterClientSchema),
     });
 
 
     const submitClient: SubmitHandler<iFormRegisterClient> = (data: iFormRegisterClient) => {
-        data.points = "0"
+        alert("fslts")           
+        console.log(data)
 
-        registerClient(data)
+        return;
     };
 
     return (
@@ -223,8 +159,8 @@ const FormUserRegisterClient = () => {
             <InputUserRegisterClient name="email" type="email" register={register} placeholder="E-mail"/>
             { errors.email?.message ? <Span style={{marginTop: "-15px"}}>{errors.email.message}</Span> : null }
 
-            <InputUserRegisterClient name="telephone" type="text" register={register} placeholder="Telefone/Celular"/>
-            { errors.telephone?.message ? <Span style={{marginTop: "-15px"}}>{errors.telephone.message}</Span> : null }
+            <InputUserRegisterClient name="phone" type="text" register={register} placeholder="Telefone/Celular"/>
+            { errors.phone?.message ? <Span style={{marginTop: "-15px"}}>{errors.phone.message}</Span> : null }
 
             <ButtonUser type="submit" text="Cadastrar" margin="30px"/>
         </Form>
@@ -236,10 +172,12 @@ const FormUserSearchClient = () => {
         resolver: zodResolver(userSearchClientSchema),
     });
 
-    const { getClient } = useContext(AdminContext)
 
     const submitSearchClient: SubmitHandler<iFormSearchClient> = (data: iFormSearchClient) => {
-        getClient(data)
+        alert("fslts")           
+        console.log(data)
+
+        return;
     };
 
     return (
@@ -251,70 +189,40 @@ const FormUserSearchClient = () => {
             { errors.cpf?.message ? <Span style={{marginTop: "-15px"}}>{errors.cpf.message}</Span> : null }
 
             <ButtonUser type="submit" text="Buscar" margin="20px"/>
-            <ButtonListRegisterClient type="button" text="Lista Completa" margin="0px"/>
+            <ButtonUser type="submit" text="Lista Completa" margin="0px"/>
         </Form>
     )
 }
 
 const FormUserEdit = () => {
-    const { clientInfo, dropFile, setFile, updateClient } = useContext(ClientContext)
-
-    const onDrop = useCallback((file: File[]) => {
-        setFile(file[0])
-    }, [setFile])
-
-    const { getRootProps, getInputProps } = useDropzone({
-        onDrop,
-        accept: {
-            "image/jpeg": [".jpg", ".jpeg"],
-            "image/png": [".png"]
-        }
-    })
-
     const { register, handleSubmit, formState: { errors } } = useForm<iFormUserEdit>({
         resolver: zodResolver(userEditSchema),
     });
 
     const submitEditUser: SubmitHandler<iFormUserEdit> = (data: iFormUserEdit) => {
-        const newData: iFormUserEdit = {
-            name: data.name ? data.name : clientInfo?.name,
-            birth_date: data.birth_date ? data.birth_date : clientInfo?.birth_date,
-            cpf: data.cpf ? data.cpf : clientInfo?.cpf,
-            email: data.email ? data.email : clientInfo?.email,
-            password: data.password ? data.password : '',
-            telephone: data.telephone ? data.telephone : clientInfo?.telephone,
-        }
+        alert("fslts")           
+        console.log(data)
 
-        if (newData.password === ''){
-            delete newData.password
-        }
-        
-        updateClient(newData, clientInfo!.id)
+        return;
     };
 
     return (
         <Form onSubmit={handleSubmit(submitEditUser)}>
             <DivBoxInput>
                 <Label htmlFor="nome">Nome:</Label>
-                <InputUser id="nome" name="name" type="text" register={register} placeholder={clientInfo?.name}/>
+                <InputUser id="nome" name="name" type="text" register={register}/>
                 { errors.name?.message ? <Span>{errors.name.message}</Span> : null }
             </DivBoxInput>
 
             <DivBoxInput>
-                <Label htmlFor="age">Data de Nascimento:</Label>
-                <InputUser id="age" name="birth_date" type="text" register={register} placeholder={clientInfo?.birth_date}/>
-                { errors.birth_date?.message ? <Span>{errors.birth_date.message}</Span> : null }
-            </DivBoxInput>
-
-            <DivBoxInput>
                 <Label htmlFor="cpf">CPF:</Label>
-                <InputUser id="cpf" name="cpf" type="text" register={register} placeholder={clientInfo?.cpf}/>
+                <InputUser id="cpf" name="cpf" type="text" register={register}/>
                 { errors.cpf?.message ? <Span>{errors.cpf.message}</Span> : null }
             </DivBoxInput>
 
             <DivBoxInput>
                 <Label htmlFor="mail">Email:</Label>
-                <InputUser id="mail" name="email" type="email" register={register} placeholder={clientInfo?.email}/>
+                <InputUser id="mail" name="email" type="email" register={register}/>
                 { errors.email?.message ? <Span>{errors.email.message}</Span> : null }
             </DivBoxInput>
 
@@ -332,15 +240,14 @@ const FormUserEdit = () => {
 
             <DivBoxInput>
                 <Label htmlFor="telephone">Telefone/Celular:</Label>
-                <InputUser id="telephone" name="telephone" type="text" register={register} placeholder={clientInfo?.telephone}/>
+                <InputUser id="telephone" name="phone" type="text" register={register}/>
                 { errors.phone?.message ? <Span>{errors.phone.message}</Span> : null }
             </DivBoxInput>
 
-            <DivBoxInput { ...getRootProps() }>
+            <DivBoxInput>
                 <Label htmlFor="photo">Foto:</Label>
-                <InputFile type="button" id="photo" value="Escolher arquivo"/>
-                <InputFile style={{display: "none"}} id="photo" placeholder="Escolher arquivo" { ...getInputProps() } />
-                <SpanFile>{dropFile === null ? 'Nenhum arquivo selecionado...' : dropFile.name}</SpanFile>
+                <InputFile id="photo" type="file" { ...register("photo") }/>
+                { errors.photo?.message ? <Span>{errors.photo.message}</Span> : null }
             </DivBoxInput>
 
             <DivBtns style={{marginTop: "10px"}}>
@@ -355,25 +262,21 @@ const FormSearchPub = () => {
         resolver: zodResolver(userSearchPubSchema),
     });
 
-    const { getPub } = useContext(ClientContext)
-
     const submitSearchPub: SubmitHandler<iFormSearchPub> = (data: iFormSearchPub) => {
-        getPub(data)
+        alert("fslts")           
+        console.log(data)
+
+        return;
     };
 
     return (
         <Form onSubmit={handleSubmit(submitSearchPub)}>
             <DivInputsYellow>
-                <div>
-                    <div>
-                        <input type="text" placeholder="Nome do Bar" { ...register("name") }/>
-                        { errors.name?.message ? <Span style={{margin: "0", color: "var(--grey-0)"}}>{errors.name.message}</Span> : null }
-                    </div>
-                    <div>
-                        <input type="text" placeholder="CPF/CNPJ" { ...register("socialNumber") }/>
-                        { errors.socialNumber?.message ? <Span style={{margin: "0", color: "var(--grey-0)"}}>{errors.socialNumber.message}</Span> : null }
-                    </div>
-                </div>
+                <input type="text" placeholder="Nome do Bar" { ...register("name") }/>
+                { errors.name?.message ? <Span>{errors.name.message}</Span> : null }
+
+                <input type="text" placeholder="CPF/CNPJ" { ...register("socialNumber") }/>
+                { errors.socialNumber?.message ? <Span>{errors.socialNumber.message}</Span> : null }
 
                 <button type="submit">Buscar</button>
             </DivInputsYellow>
